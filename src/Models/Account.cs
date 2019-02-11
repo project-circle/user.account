@@ -1,7 +1,10 @@
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace UserAccount.Models
 {
     public class Account
     {
+        [BsonId]
         public string Id { get; set; }
 
         public string Email { get; set; }
