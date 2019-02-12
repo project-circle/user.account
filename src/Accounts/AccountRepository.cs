@@ -7,17 +7,15 @@ namespace UserAccount.Accounts
 {
     public class AccountRepository : IRepository<Account>
     {
-        private readonly AccountContext _context;
+        private readonly IAccountContext _context;
 
-        public AccountRepository(AccountContext context)
+        public AccountRepository(IAccountContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public async Task<string> AddAsync(Account account)
         {
-            account.Id = Guid.NewGuid().ToString();
-
             await _context.Accounts.InsertOneAsync(account);
 
             return account.Id;

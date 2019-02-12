@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+    container_name: user.account
+    ports:
+     - 9090:9090
+    environment:
+      - Database__ConnectionString=mongodb://foo:bar@mongo:27017
+    depends_on:
+      - 'mongo'
+  mongo:
+    image: 'mongo'
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=foo
+      - MONGO_INITDB_ROOT_PASSWORD=bar

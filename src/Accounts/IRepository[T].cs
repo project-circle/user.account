@@ -7,9 +7,9 @@ namespace UserAccount.Accounts
     {
         Task<T> GetAsync(string id);
 
-        Task<string> AddAsync(T account);
+        Task<string> AddAsync(T entity);
 
-        Task UpdateAsync(string id, T account);
+        Task UpdateAsync(string id, T entity);
 
         Task DeleteAsync(string id);
     }

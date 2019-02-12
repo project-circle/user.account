@@ -16,12 +16,15 @@ namespace UserAccount.Controllers
 
         public AccountsController(IRepository<Account> repository)
         {
-            _repository = repository;
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         [HttpGet("{id}", Name = "GetAccount")]
         public async Task<ActionResult<Account>> Get(string id)
         {
+            if (string.IsNullOrEmpty(id))
+                return BadRequest();
+
             var account = await _repository.GetAsync(id);
 
             if (account == null)
@@ -38,27 +41,29 @@ namespace UserAccount.Controllers
             
             var id = await _repository.AddAsync(account);
             
-            var uri = Url.Link("GetAccount", new { id = id });
-            
-            return Created(uri, account);
+            return CreatedAtRoute("GetAccount", new { id = id }, account);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(string id, [FromBody] Account account)
         {
+            if (string.IsNullOrEmpty(id))
+                return BadRequest();
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             await _repository.UpdateAsync(id, account);
 
-            var uri = Url.Link("GetAccount", new { id = id });
-
-            return Accepted(uri, account);
+            return AcceptedAtRoute("GetAccount", new { id = id }, account);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(string id)
         {
+            if (string.IsNullOrEmpty(id))
+                return BadRequest();
+
             await _repository.DeleteAsync(id);
 
             return NoContent();
