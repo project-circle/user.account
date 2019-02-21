@@ -21,7 +21,7 @@ namespace UserAccount.Database
 
             if (client != null)
             {
-                _database = client.GetDatabase(config.Value.DatabaseName);
+                _database = client.GetDatabase(config.Value.Name);
             }
         }
     }

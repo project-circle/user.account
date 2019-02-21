@@ -19,7 +19,7 @@ namespace UserAccount
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://localhost:9090")
+                .UseUrls("http://*:10080")
                 .UseStartup<Startup>();
     }
 }
