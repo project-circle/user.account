@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UserAccount.Models;
 
-namespace UserAccount.Accounts
+namespace UserAccount.Database
 {
     public interface IRepository<T>
     {

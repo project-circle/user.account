@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using UserAccount.Accounts;
+using UserAccount.Database;
 using UserAccount.Config;
 using UserAccount.Models;
 

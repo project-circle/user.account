@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using UserAccount.Models;
 
-namespace UserAccount.Accounts
+namespace UserAccount.Database
 {
     public class AccountRepository : IRepository<Account>
     {

@@ -1,7 +1,7 @@
 using MongoDB.Driver;
 using UserAccount.Models;
 
-namespace UserAccount.Accounts
+namespace UserAccount.Database
 {
     public interface IAccountContext
     {
